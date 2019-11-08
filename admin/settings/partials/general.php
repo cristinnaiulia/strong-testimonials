@@ -201,9 +201,9 @@ $options = get_option( 'wpmtst_options' );
         <td>
             <fieldset>
                 <label>
-                    <input type="checkbox" name="wpmtst_options[nofollow]" <?php checked( $options['nofollow'] ); ?>>
+                    <input type="checkbox" name="wpmtst_options[nofollow]"  <?php checked($options['nofollow']); ?>>
 					<?php _e( 'Add <code>rel="nofollow"</code> to URL custom fields.', 'strong-testimonials' ); ?>
-                    <?php _e( 'Off by default.', 'strong-testimonials' ); ?>
+                    <?php _e( 'On by default.', 'strong-testimonials' ); ?>
                 </label>
                 <p class="description">
 	                <?php printf( 'To edit this value on your existing testimonials in bulk, try <a href="%s" target="_blank">%s</a> and set <code>nofollow</code> to <b>default</b>, <b>yes</b> or <b>no</b>.',

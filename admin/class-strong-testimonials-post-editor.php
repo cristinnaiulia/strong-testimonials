@@ -113,6 +113,9 @@ class Strong_Testimonials_Post_Editor {
 				case 'url' :
 					self::meta_option__url( $field, $post, $is_new );
 					break;
+				case 'url_new' :
+					self::meta_option__url__new( $field, $post, $is_new );
+					break;		
 				case 'checkbox' :
 					self::meta_option__checkbox( $field, $post, $is_new );
 					break;
@@ -188,7 +191,33 @@ class Strong_Testimonials_Post_Editor {
                 <option value="yes" <?php selected( $post->nofollow, 'yes' ); ?>><?php _e( 'yes', 'strong-testimonials' ); ?></option>
                 <option value="no" <?php selected( $post->nofollow, 'no' ); ?>><?php _e( 'no', 'strong-testimonials' ); ?></option>
             </select>
+		</div>
+		<?php
+	}
+
+	/**
+	 * URL New input.
+	 *
+	 * @param $field
+	 * @param $post
+	 * @param $is_new
+	 */
+	private static function meta_option__url__new( $field, $post, $is_new ) {
+		?>
+		<div class="input-url">
+			<?php printf( '<input id="%2$s" type="%1$s" class="custom-input" name="custom[%2$s]" value="%3$s" size="">',
+			              $field['input_type'], $field['name'], esc_attr( $post->{$field['name']} ) ); ?>
         </div>
+		<div class="input-open_links_in_new_tab">
+            <label for="open_links_in_new_tab"><code>rel="nopener noreferr"</code></label>
+            <select id="open_links_in_new_tab" name="custom[open_links_in_new_tab]">
+                <option value="default" <?php selected( $post->open_links_in_new_tab, 'default' ); ?>><?php _e( 'default', 'strong-testimonials' ); ?></option>
+                <option value="yes" <?php selected( $post->open_links_in_new_tab, 'yes' ); ?>><?php _e( 'yes', 'strong-testimonials' ); ?></option>
+                <option value="no" <?php selected( $post->open_links_in_new_tab, 'no' ); ?>><?php _e( 'no', 'strong-testimonials' ); ?></option>
+            </select>
+		</div>
+		
+
 		<?php
 	}
 

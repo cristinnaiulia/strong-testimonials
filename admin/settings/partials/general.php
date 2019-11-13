@@ -214,6 +214,28 @@ $options = get_option( 'wpmtst_options' );
         </td>
     </tr>
 
+	<!-- Open in new tab -->
+	<tr valign="top">
+        <th scope="row">
+			<?php _e( 'Open URL in New Tab', 'strong-testimonials' ); ?>
+        </th>
+        <td>
+            <fieldset>
+                <label>
+                    <input type="checkbox" name="wpmtst_options[open_links_in_new_tab]" <?php checked($options['open_links_in_new_tab']);?>>
+					<?php _e( 'Add <code>rel="nopener noreferr"</code> to URL custom fields.', 'strong-testimonials' ); ?>
+                    <?php _e( 'Off by default.', 'strong-testimonials' ); ?>
+                </label>
+                <p class="description">
+	                <?php printf( 'To edit this value on your existing testimonials in bulk, try <a href="%s" target="_blank">%s</a> and set <code>nopener noreferr</code> to <b>default</b>, <b>yes</b> or <b>no</b>.',
+		                esc_url( 'https://wordpress.org/plugins/custom-field-bulk-editor/' ),
+		                __( 'Custom Field Bulk Editor', 'strong-testimonials' ) ); ?>
+                </p>
+            </fieldset>
+        </td>
+    </tr>
+	<!-- End Open in new tab -->
+
     <?php if ( wpmtst_is_plugin_active( 'lazy-loading-responsive-images' ) ) : ?>
     <tr valign="top">
         <th scope="row">

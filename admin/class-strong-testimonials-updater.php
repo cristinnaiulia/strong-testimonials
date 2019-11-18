@@ -150,6 +150,14 @@ class Strong_Testimonials_Updater {
 			self::convert_nofollow();
 			self::update_history_log( '2.23.0_convert_nofollow' );
 		}
+                
+                /**
+		 * Convert open_links_in_new_tab
+		 */
+		if ( ! isset( $history['2.23.0_convert_open_links_in_new_tab'] ) ) {
+			self::convert_nofollow();
+			self::update_history_log( '2.23.0_convert_open_links_in_new_tab' );
+		}
 
 
 		/**
@@ -1226,6 +1234,55 @@ class Strong_Testimonials_Updater {
 			}
 
 			update_post_meta( $post->ID, 'nofollow', $new_value );
+		}
+	}
+        
+        /**
+	 * Convert open_links_in_new_tab from (on|off) to (1|0).
+	 *
+	 * @since 2.23.0
+	 */
+	public static function convert_open_links_in_new_tab() {
+		$args  = array(
+			'posts_per_page'   => - 1,
+			'post_type'        => 'wpm-testimonial',
+			'post_status'      => 'publish',
+			'suppress_filters' => true,
+		);
+		$posts = get_posts( $args );
+		if ( ! $posts ) {
+			return;
+		}
+
+		/**
+		 * Remove the equivocation. There is no false.
+		 */
+		foreach ( $posts as $post ) {
+			$open_links_in_new_tab  = get_post_meta( $post->ID, 'open_links_in_new_tab', true );
+			$new_value = 'default';
+
+			if ( 'on' == $open_links_in_new_tab ) {
+				$new_value = 'yes';
+			}
+			elseif ( 1 === $open_links_in_new_tab ) {
+				$new_value = 'yes';
+			}
+			elseif ( 'off' == $open_links_in_new_tab ) {
+				$new_value = 'no';
+			}
+			elseif ( 0 === $open_links_in_new_tab ) {
+				$new_value = 'no';
+			}
+			elseif ( is_bool( $open_links_in_new_tab ) ) {
+				if ( $open_links_in_new_tab ) {
+					$new_value = 'yes';
+				}
+				else {
+					$new_value = 'default';
+				}
+			}
+
+			update_post_meta( $post->ID, 'open_links_in_new_tab', $new_value );
 		}
 	}
 

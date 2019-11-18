@@ -363,13 +363,38 @@ function wpmtst_the_custom_field( $field ) {
 						else {
 							$nofollow = '';
 						}
+                                                
+                                                // TODO The 2nd - Abstract this global fallback technique.
+						$is_open_links_in_new_tab = get_post_meta( $post->ID, 'open_links_in_new_tab', true );
+						if ( 'default' == $is_open_links_in_new_tab || '' == $is_open_links_in_new_tab ) {
+							// convert default to (yes|no)
+							$is_open_links_in_new_tab = $options['open_links_in_new_tab'] ? 'yes' : 'no';
+						}
+						if ( 'yes' == $is_open_links_in_new_tab ) {
+							$open_links_in_new_tab = ' rel="nopener noreferr"';
+						}
+						else {
+							$open_links_in_new_tab = '';
+						}
 
 						// if field empty, use domain instead
 						if ( ! $text || is_array( $text ) ) {
 							$text = preg_replace( '(^https?://)', '', $url );
 						}
-
-						$output = sprintf( '<a href="%s"%s%s>%s</a>', $url, $newtab, $nofollow, $text );
+                                                
+                                                // nofollow & nopener at the same time
+                                                
+                                                $nofollowopener = 'rel="nofollow nopener noreferr"';
+                                                
+                                                if ( $is_nofollow == 'yes' && $is_open_links_in_new_tab == 'no' ) {
+                                                    $output = sprintf( '<a href="%s"%s%s>%s</a>', $url, $newtab, $nofollow, $text );
+                                                } elseif ($is_nofollow == 'no' && $is_open_links_in_new_tab == 'yes') {
+                                                    $output = sprintf( '<a href="%s"%s%s>%s</a>', $url, $newtab, $open_links_in_new_tab, $text );
+                                                } elseif ($is_nofollow == 'yes' && $is_open_links_in_new_tab == 'yes') {
+                                                    $output = sprintf( '<a href="%s"%s%s>%s</a>', $url, $newtab, $nofollowopener, $text );
+                                                } elseif ($is_nofollow == 'no' && $is_open_links_in_new_tab == 'no') {
+                                                    $output = sprintf( '<a href="%s"%s>%s</a>', $url, $newtab, $text );
+                                                }
 					}
 
 				}

@@ -217,7 +217,7 @@ $options = get_option( 'wpmtst_options' );
 	<!-- Open in new tab -->
 	<tr valign="top">
         <th scope="row">
-			<?php _e( 'Open URL in New Tab', 'strong-testimonials' ); ?>
+			<?php _e( 'Nopener Noreferr Links', 'strong-testimonials' ); ?>
         </th>
         <td>
             <fieldset>

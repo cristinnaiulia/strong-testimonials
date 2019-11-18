@@ -112,10 +112,7 @@ class Strong_Testimonials_Post_Editor {
 					break;
 				case 'url' :
 					self::meta_option__url( $field, $post, $is_new );
-					break;
-				case 'url_new' :
-					self::meta_option__url__new( $field, $post, $is_new );
-					break;		
+					break;	
 				case 'checkbox' :
 					self::meta_option__checkbox( $field, $post, $is_new );
 					break;
@@ -180,7 +177,8 @@ class Strong_Testimonials_Post_Editor {
 	 */
 	private static function meta_option__url( $field, $post, $is_new ) {
 		?>
-        <div class="input-url">
+		<!-- Don't do this at Home. Trust us, we're professional -->
+        <div class="input-url" style="width:100%;margin-bottom:10px;">
 			<?php printf( '<input id="%2$s" type="%1$s" class="custom-input" name="custom[%2$s]" value="%3$s" size="">',
 			              $field['input_type'], $field['name'], esc_attr( $post->{$field['name']} ) ); ?>
         </div>
@@ -192,22 +190,6 @@ class Strong_Testimonials_Post_Editor {
                 <option value="no" <?php selected( $post->nofollow, 'no' ); ?>><?php _e( 'no', 'strong-testimonials' ); ?></option>
             </select>
 		</div>
-		<?php
-	}
-
-	/**
-	 * URL New input.
-	 *
-	 * @param $field
-	 * @param $post
-	 * @param $is_new
-	 */
-	private static function meta_option__url__new( $field, $post, $is_new ) {
-		?>
-		<div class="input-url">
-			<?php printf( '<input id="%2$s" type="%1$s" class="custom-input" name="custom[%2$s]" value="%3$s" size="">',
-			              $field['input_type'], $field['name'], esc_attr( $post->{$field['name']} ) ); ?>
-        </div>
 		<div class="input-open_links_in_new_tab">
             <label for="open_links_in_new_tab"><code>rel="nopener noreferr"</code></label>
             <select id="open_links_in_new_tab" name="custom[open_links_in_new_tab]">
@@ -216,8 +198,6 @@ class Strong_Testimonials_Post_Editor {
                 <option value="no" <?php selected( $post->open_links_in_new_tab, 'no' ); ?>><?php _e( 'no', 'strong-testimonials' ); ?></option>
             </select>
 		</div>
-		
-
 		<?php
 	}
 

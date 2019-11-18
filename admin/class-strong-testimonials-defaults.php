@@ -23,6 +23,7 @@ class Strong_Testimonials_Defaults {
 	 * @since 2.10.0 pending indicator
 	 * @since 2.21.0 load Font Awesome
 	 * @since 2.22.5 nofollow
+         * @since 2.32.5 nopener noreferr (open link in new tab)
 	 * @since 2.27.0 no_lazyload
 	 *
 	 * @return array
@@ -31,7 +32,8 @@ class Strong_Testimonials_Defaults {
 		$default_options = array(
 			'embed_width'             => '',
 			'load_font_awesome'       => true,
-			'nofollow'                => false,
+			'nofollow'                => true,
+                        'open_links_in_new_tab'    => false,
 			'pending_indicator'       => true,
 			'remove_whitespace'       => true,
 			'reorder'                 => false,

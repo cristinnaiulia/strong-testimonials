@@ -177,8 +177,7 @@ class Strong_Testimonials_Post_Editor {
 	 */
 	private static function meta_option__url( $field, $post, $is_new ) {
 		?>
-		<!-- Don't do this at Home. Trust us, we're professional -->
-        <div class="input-url" style="width:100%;margin-bottom:10px;">
+        <div class="input-url">
 			<?php printf( '<input id="%2$s" type="%1$s" class="custom-input" name="custom[%2$s]" value="%3$s" size="">',
 			              $field['input_type'], $field['name'], esc_attr( $post->{$field['name']} ) ); ?>
         </div>

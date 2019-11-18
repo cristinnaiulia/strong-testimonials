@@ -39,15 +39,18 @@ div.checkbox input[type="checkbox"] {
 }
 
 .input-url,
-.input-nofollow {
+.input-nofollow,
+.input-open_links_in_new_tab {
   display: inline-block;
 }
 
 .input-url {
-  width: calc(100% - 210px);
+  width:100%;
+  margin-bottom:10px;
 }
 
-.input-nofollow {
+.input-nofollow,
+.input-open_links_in_new_tab {
   float: right;
 }
 

@@ -460,9 +460,9 @@ function wpmtst_array_filter__custom_fields( $field ) {
 	if ( 'category' == strtok( $field['input_type'], '-' ) ) {
 		return false;
 	}
-	if ( 'checkbox' == $field['input_type'] ) {
-		return false;
-	}
+//	if ( 'checkbox' == $field['input_type'] ) {
+//		return false;
+//	}
 
 	return true;
 }
@@ -479,7 +479,6 @@ function wpmtst_array_filter__custom_fields( $field ) {
  */
 function wpmtst_view_field_inputs( $key, $field, $adding = false ) {
 	$custom_fields = array_filter( wpmtst_get_custom_fields(), 'wpmtst_array_filter__custom_fields' );
-
 	$builtin_fields = wpmtst_get_builtin_fields();
 
 	$all_fields = array(
@@ -499,6 +498,7 @@ function wpmtst_view_field_inputs( $key, $field, $adding = false ) {
 		'rating'    => __( 'rating', 'strong-testimonials' ),
 		'platform'    => __( 'platform', 'strong-testimonials' ),
 		'shortcode' => __( 'shortcode', 'strong-testimonials' ),
+                'checkbox' => __('checkbox', 'strong-testimonials')
 	);
 
 	if ( isset( $custom_fields[ $field['field'] ] ) ) {

@@ -448,6 +448,14 @@ function wpmtst_the_custom_field( $field ) {
 				}
 
 				break;
+                                
+                        case 'checkbox':
+                                 // if checked we display the checkbox field text
+                                if (get_post_meta( $post->ID, $field_name, true )) {
+                                    $output = $field['prop']['text'];
+                                }
+                                break;
+                                
 			default:
 				// text field
 				$output = get_post_meta( $post->ID, $field_name, true );

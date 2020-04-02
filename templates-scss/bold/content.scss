@@ -90,6 +90,17 @@ $template: bold;
     .wpmtst-testimonial:not(:first-child) {
       display: none;
     }
+    
+    .wpmtst-testimonial {
+      height: 100% !important;
+      .wpmtst-testimonial-inner {
+        display: flex;
+        flex-direction: column;
+        .wpmtst-testimonial-client {
+          margin-top: auto;
+        }
+      }
+    }
   }
 
   &.nav-position-inside {

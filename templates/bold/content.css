@@ -221,9 +221,20 @@ Thanks https://css-tricks.com/minimum-paragraph-widths/
 -----------------------------------------------*/
 .strong-view.wpmtst-bold.slider-container .strong-content {
   margin: 0 auto;
+  height: 100%;
 }
 .strong-view.wpmtst-bold.slider-container .wpmtst-testimonial:not(:first-child) {
   display: none;
+}
+.strong-view.wpmtst-bold.slider-container .wpmtst-testimonial {
+  height: 100% !important;
+}
+.strong-view.wpmtst-bold.slider-container .wpmtst-testimonial .wpmtst-testimonial-inner {
+  display: flex;
+  flex-direction: column;
+}
+.strong-view.wpmtst-bold.slider-container .wpmtst-testimonial .wpmtst-testimonial-inner .wpmtst-testimonial-client {
+  margin-top: auto;
 }
 .strong-view.wpmtst-bold.nav-position-inside .wpmtst-testimonial-inner {
   padding-bottom: 60px;

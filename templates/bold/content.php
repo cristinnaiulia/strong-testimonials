@@ -32,9 +32,9 @@ do_action( 'wpmtst_before_view' );
 					<?php wpmtst_the_content(); ?>
 					<?php do_action( 'wpmtst_after_testimonial_content' ); ?>
 				</div>
-
-				<?php wpmtst_the_client(); ?>
-			
+                                <div class="wpmtst-testimonial-client">
+                                    <?php wpmtst_the_client(); ?>
+                                </div>
 				<div class="clear"></div>
 				<?php do_action( 'wpmtst_after_testimonial' ,$atts); ?>
 			 </div>
